@@ -32,14 +32,22 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean updataUser() throws Exception {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean deleteUser() throws Exception {
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public User loadUser(String username, String password) throws Exception {
+		User user = userDao.findUserByUsername(username);
+		if(user == null) {
+			return null;
+		}else {
+			return user.getPassword().equals(password) ? user : null;
+		}
 	}
 
 

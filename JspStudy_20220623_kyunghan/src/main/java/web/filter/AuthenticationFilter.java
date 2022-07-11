@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import config.ServletContextConfig;
 import domain.entity.User;
 
 
@@ -42,14 +43,14 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 				return;
 			}
 		}
-		
+		req.getServletContext();//최상위 객체
 		
 		chain.doFilter(request, response);
 	}
 
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+		fConfig.getServletContext();
 	}
 
 }
